@@ -6,9 +6,8 @@ import (
 	"strings"
 )
 
-func SortString(w string) {
-	var conso, vowel string
-
+func SortString(w string) string {
+	var vowel, conso, word string
 	s := strings.Split(w, "")
 	sort.Strings(s)
 	newS := strings.Join(s, "")
@@ -21,15 +20,17 @@ func SortString(w string) {
 			conso += string(value)
 		}
 	}
+	word = (vowel + conso)
 	fmt.Println("Hasil Sort: ", vowel+conso)
+	return word
 }
 
 func main() {
 	fmt.Println("Go String Vowel-Consonant Sorter")
 	inputString := readLine("Input Word to Sort: ")
-	fmt.Println(inputString)
-	
+
 	SortString(inputString)
+
 }
 
 func readLine(word string) string {
