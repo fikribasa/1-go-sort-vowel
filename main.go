@@ -1,4 +1,4 @@
-package main 
+package main
 
 import (
 	"fmt"
@@ -6,26 +6,35 @@ import (
 	"strings"
 )
 
-func SortString (w string) string{
-	s:=strings.Split(w, "")
-	sort.Strings(s)
-	return strings.Join(s, "")
-}
-
-func main(){
+func SortString(w string) {
 	var conso, vowel string
-	inputString:="osama"
-	fmt.Println(inputString)
-	
-	inputString=SortString(inputString)
-	for _, value := range inputString {
+
+	s := strings.Split(w, "")
+	sort.Strings(s)
+	newS := strings.Join(s, "")
+
+	for _, value := range newS {
 		switch value {
-			case 'a','e','i','u','o','A','E','I','U','O' :
-				vowel+=string(value)
-			default :
-				conso+=string(value)
+		case 'a', 'e', 'i', 'u', 'o', 'A', 'E', 'I', 'U', 'O':
+			vowel += string(value)
+		default:
+			conso += string(value)
 		}
 	}
-	fmt.Println("Hasil : ",vowel+conso)
+	fmt.Println("Hasil Sort: ", vowel+conso)
+}
 
+func main() {
+	fmt.Println("Go String Vowel-Consonant Sorter")
+	inputString := readLine("Input Word to Sort: ")
+	fmt.Println(inputString)
+	
+	SortString(inputString)
+}
+
+func readLine(word string) string {
+	fmt.Print(word)
+	var input string
+	fmt.Scanln(&input)
+	return input
 }
